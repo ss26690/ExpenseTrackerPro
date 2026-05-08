@@ -10,7 +10,7 @@ import SwiftUI
 
 struct SplashView: View {
 
-    @Binding var showOnboarding: Bool
+    @Binding var showSplash: Bool
 
     @State private var logoScale: CGFloat = 0.8
     @State private var logoOpacity = 0.0
@@ -109,7 +109,7 @@ struct SplashView: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
 
                 withAnimation {
-                    showOnboarding = true
+                    showSplash = false
                 }
             }
         }
@@ -117,5 +117,5 @@ struct SplashView: View {
 }
 
 #Preview {
-    SplashView(showOnboarding: .constant(true))
+    SplashView(showSplash: .constant(true))
 }

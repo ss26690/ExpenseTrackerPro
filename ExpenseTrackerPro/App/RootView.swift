@@ -9,15 +9,31 @@
 import SwiftUI
 
 struct RootView: View {
-    
-    @State private var showOnboarding = false
-    
+
+    @State private var showSplash = true
+
+    @AppStorage("hasSeenOnboarding")
+    private var hasSeenOnboarding = false
+
     var body: some View {
-        
-        if showOnboarding {
-            OnboardingView()
-        } else {
-            SplashView(showOnboarding: $showOnboarding)
+
+        Group {
+
+            if showSplash {
+
+                SplashView(showSplash: $showSplash)
+
+            } else {
+
+                if hasSeenOnboarding {
+
+                    DashboardView()
+
+                } else {
+
+                    OnboardingView()
+                }
+            }
         }
     }
 }
